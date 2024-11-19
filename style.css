@@ -1,0 +1,137 @@
+@font-face {
+  font-family: Helvetica-Var;
+  src: url(./font/HELVETICA-NOW-VAR.TTF);
+}
+@font-face {
+  font-family: VintageGlam;
+  src: url(./font/vintageGlamour/VINTAGEGLAMOURITALIC-DO471.TTF);
+}
+
+
+body{
+  margin: 0;
+  padding: 0;
+  list-style: none; 
+  font-family: Helvetica-Var;
+  font-variation-settings: "opsz" 36;
+  color: #131A35;
+}
+figure{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+figure img{
+  width:-webkit-fill-available;
+  height:-webkit-fill-available;
+  border: solid 2px #131A35;
+  object-fit: cover;
+}
+section.pager{
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  height: 100vh;
+}
+section.pager div{
+  padding: 20px;
+  border: solid 2px #131A35;
+  display: flex;
+  flex-direction: column;
+}
+section.pager div p{
+  margin: 0;
+  font-size: calc(.9vw + .2vh - .05em);
+}
+section.pager div h3, h1, h2, h4{
+  margin: 0;
+}
+
+h3.title{
+  font-family: VintageGlam;
+  font-size: calc(3.6vw - .3em);
+}
+.love{
+  font-size: calc(2.3vw - .5em);
+  font-weight: 700;
+}
+.code{
+  grid-column: 1/5;
+  grid-row: 1/4;
+  background-color: #EDB5E7;
+  cursor: pointer;
+}
+.cours{
+  grid-column: 8/12;
+  grid-row: 4/9;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #3FA87C;
+  color: #C4DAED;
+  cursor:not-allowed;
+}
+.cours .avail{
+  font-size: calc(3.6vw - .6em);
+  text-align: center;
+  width: 15vw;
+  font-weight: 1000;
+}
+.cours .title{
+  font-size: calc(3.6vw - .7em);
+}
+.dna{
+  grid-column: 5/12;
+  grid-row: 1/4;
+  background-color: #F7FE8E;
+  cursor: pointer;
+}
+.i{
+  grid-column: 1/8;
+  grid-row: 4/9;
+}
+.ii{
+  grid-column: 12/21;
+  grid-row: 1/6;
+  width: 100%;
+  height: 100%;
+}
+.hpb{
+  grid-column: 12/21;
+  grid-row: 6/9;
+  position: relative;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+  background-color: #F8A0A0;
+  cursor: pointer;
+}
+.hpb h3{
+  font-size: 3.6vw;
+  width: 20vw;
+  text-align: center;
+  font-weight: 1000;
+  z-index: 99;
+}
+.cursor{
+  width: 100px;
+  height: 100px;
+  background-color: #c4daed86;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50px;
+  border:solid 1px #c4daeddc;
+  position: fixed;
+  pointer-events: none;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  backdrop-filter:blur(4px);
+  rotate:-45deg;
+  opacity: 0;
+  transition: 10ms;
+  scale: 0;
+}
+.bigf img{
+  scale: 1 !important;
+}
