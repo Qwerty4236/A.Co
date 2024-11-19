@@ -107,7 +107,6 @@ h3.title{
 }
 .hpb h3{
   font-size: 3.6vw;
-  width: 20vw;
   text-align: center;
   font-weight: 1000;
   z-index: 99;
@@ -134,4 +133,41 @@ h3.title{
 }
 .bigf img{
   scale: 1 !important;
+}
+
+@media screen and (max-width: 1000px){
+  figure{
+    display: none;
+  }
+  section.pager{
+    display: flex;
+    flex-direction: column;
+  }
+  section.pager div{
+    height: -webkit-fill-available;
+    border-width: .2vw;
+    align-items: center;
+    justify-content: center;
+    padding: 17px;
+    
+  }
+  section.pager div p{
+    font-size: calc(.7em + .6vw);
+  }
+  h3.title{
+  font-size: calc(2em + 2vw);
+  }
+  .cours .title{
+    font-size: calc(2em + 2vw)
+  }
+  .love{
+    font-size: calc(20px + 1vw);
+  }
+  .cours .avail{
+    font-size: calc(20px + 1vw);
+    width: auto;
+  }
+  .hpb h3{
+    font-size: calc(30px + 2vw);
+  }
 }
