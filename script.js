@@ -11,8 +11,6 @@ const player=document.querySelector("div.player")
 const video=document.querySelector("div.player video")
 const svg1=document.querySelector("div.player .cursorpp svg:nth-child(1)")
 const svg2=document.querySelector("div.player .cursorpp svg:nth-child(2)")
-console.log(svg1,svg2);
-
 let i=0
 
 //hide the cursor on 1000px
@@ -21,12 +19,14 @@ if (window.innerWidth<=1000){
   cursorpp.style.display='none'
   dot.style.display='none'
   video.setAttribute("controls","controls")
+  download.disabled=true
 }
 else{
   cursor.style.display='flex'
   cursorpp.style.display='flex'
   dot.style.display='flex'
   video.removeAttribute("controls")
+  download.disabled=false
 }
 window.addEventListener('resize',()=>{
   if (window.innerWidth<=1000){
@@ -34,12 +34,14 @@ window.addEventListener('resize',()=>{
     cursorpp.style.display='none'
     dot.style.display='none'
     video.setAttribute("controls","controls")
+    download.disabled=true
   }
   else{
     cursor.style.display='flex'
     cursorpp.style.display='flex'
     dot.style.display='flex'
     video.removeAttribute("controls")
+    download.disabled=false
   }
 },true)
 
@@ -248,5 +250,9 @@ video.addEventListener('ended',()=>{
   i=0
   gsap.to(svg1,.5,{scale:0,})
   gsap.to(svg2,.5,{scale:1,})
+})
+
+download.addEventListener('click',()=>{
+  window.location.href='app/birthday.zip'
 })
 

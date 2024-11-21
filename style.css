@@ -11,21 +11,6 @@
   user-select: none;
   scroll-behavior: smooth;
 }
-header{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-  width: 100%;
-  padding: 20px;
-  mix-blend-mode: difference;
-  pointer-events: none;
-}
-header h2{
-  font-size: calc(3.6vw - .7em);
-  font-weight: 1000;
-  color: #C4DAED;
-}
 body{
   margin: 0;
   padding: 0;
@@ -199,6 +184,7 @@ section.thecode p{
   box-shadow: 3px 5px 0 #131A35;
   transition: .5s;
   font-size: calc(.9vw + .2vh - .05em);
+  align-items: center;
 }
 svg path{
   transition: .5s;
@@ -243,6 +229,7 @@ svg path{
   height: 100%;
   align-items: center;
   background-color: transparent;
+  padding: 0;
 }
 .player{
   position: fixed;
@@ -296,7 +283,9 @@ button{
 .cursorpp svg:nth-child(1){
   scale: 0;
 }
-
+section.thecode span{
+  display: none;
+}
 @media screen and (max-width: 1000px){
   *{
     cursor:auto;
@@ -341,4 +330,30 @@ button{
   .hpb h3{
     font-size: calc(30px + 2vw);
   }
+  section.thecode{
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  section.thecode p{
+    font-size: calc(.8em + .6vw);
+  }
+  section.thecode h2{
+    font-size: calc(3.6em + 2vw);
+  }
+  section.thecode button{
+    font-size: calc(.6em + .6vw);
+  }
+  section.thecode span{
+    display: block;
+    font-size: calc(.63em + .6vw);
+    color: #3F88C5;
+  }
+  section.thecode .download{
+    padding: 8px 30px;
+  }
+  .player video{
+    width: 96%;
+  }
+
 }
