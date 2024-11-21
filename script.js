@@ -12,9 +12,9 @@ const video=document.querySelector("div.player video")
 const svg1=document.querySelector("div.player .cursorpp svg:nth-child(1)")
 const svg2=document.querySelector("div.player .cursorpp svg:nth-child(2)")
 const svg3=document.querySelector("div.player .cursorpp svg:nth-child(3)")
-const backg=document.querySelector("div.backg")
 const heartImg=document.querySelector("figure.theimg")
 let i=0
+
 
 //hide the cursor on 1000px
 if (window.innerWidth<=1000){
@@ -121,11 +121,12 @@ dna.addEventListener("mouseleave",()=>{
 
 //redirection on click
 code.addEventListener('click',()=>{
-  scroll.scrollTo('#thecode')
+  document.getElementById("thecode").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 })
 dna.addEventListener('click',()=>{
-  scroll.scrollTo('#dna')
+  document.getElementById("dna").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
 })
+
 heartImg.addEventListener('click',()=>{
   window.location.href='dna'
 })
@@ -170,16 +171,8 @@ download.addEventListener('mouseleave',()=>{
 })
 
 //change the color on the see video butt
-btnvid.addEventListener('mouseenter',()=>{
-  gsap.to(dot,.5,{
-    backgroundColor:'#27AC4B',
-  })
-})
-btnvid.addEventListener('mouseleave',()=>{
-  gsap.to(dot,.5,{
-    backgroundColor:'#131A35',
-  })
-})
+btnvid.addEventListener('mouseenter',()=>{gsap.to(dot,.5,{backgroundColor:'#27AC4B',})})
+btnvid.addEventListener('mouseleave',()=>{gsap.to(dot,.5,{backgroundColor:'#131A35',})})
 
 //show the video player
 btnvid.addEventListener('click',()=>{
@@ -188,8 +181,7 @@ btnvid.addEventListener('click',()=>{
     opacity:1,
   })
   document.body.style.overflow='hidden'
-  gsap.to(backg,.2,{opacity:1,})
-  scroll.stop()
+  
 })
 
 player.addEventListener('click',(e)=>{
@@ -201,8 +193,6 @@ player.addEventListener('click',(e)=>{
     opacity:0,
   })
   document.body.style.overflow=''
-  scroll.start()
-  gsap.to(backg,.2,{opacity:0,})
   video.pause()
   i=0
   gsap.to(svg3,.5,{scale:1,})
@@ -280,10 +270,8 @@ video.addEventListener('ended',()=>{
   gsap.to(player,.5,{
     opacity:0,
 })
-  gsap.to(backg,.2,{opacity:0,})
   document.body.style.overflow=''
   video.pause()
-  scroll.start()
   i=0
   gsap.to(svg3,.5,{scale:1,})
   gsap.to(svg1,.5,{scale:0,})

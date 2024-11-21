@@ -72,7 +72,7 @@
       </div>
       <span>Download only in Windows PC</span>
     </section>
-    
+
     <section id="dna" class="thecode thedna">
       <h2 >DNA-Heart</h2>
       <div class="imgur">
@@ -83,27 +83,41 @@
         </figure>
       </div>
     </section>
+    <footer>
+      <img src="./img/hand.png" alt="heart hand">
+      <section class="aco">
+        <h2>A.Co</h2>
+        <h3>Made By Love</h3>
+      </section>
+      <section class="dcu">
+        <h3>Discover</h3>
+        <nav>
+          <li onmouseleave="{gsap.to(dot,.5,{backgroundColor:'#131A35',})}" onmouseenter="{gsap.to(dot,.5,{backgroundColor:'#27AC4B',})}" onclick='{document.getElementById("thecode").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});}'>
+            The Code
+          </li>
+          <li onmouseleave="{gsap.to(dot,.5,{backgroundColor:'#131A35',})}" onmouseenter="{gsap.to(dot,.5,{backgroundColor:'#27AC4B',})}" onclick='{document.getElementById("dna").scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});}'>
+            DNA-Heart
+          </li>
+          <li onmouseleave="{gsap.to(dot,.5,{backgroundColor:'#131A35',})}" onmouseenter="{gsap.to(dot,.5,{backgroundColor:'#A1A1A1',})}">The Cours (Not available)</li>
+        </nav>
+      </section>
+      <section class="dcu">
+        <h3>Contact Us</h3>
+        <nav>
+          <li>You got my social</li>
+          <li>What! Are you still reading ?</li>
+          <li>Instead of reading click on Happy Birthday Flower</li>
+        </nav>
+      </section>
+    </footer>
   </main>
 
-  <div class="backg"></div>
   <div class="cursor">
     Discover
   </div>
   <div class="dot"></div>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="./locomotive-scroll.min.js"></script>
-  <script>
-    const scroll = new LocomotiveScroll({
-      el: document.querySelector('[data-scroll-container]'),
-      smooth: true,
-      smartphone: {
-        smooth: true
-      },
-      tablet: {
-        smooth: true
-      }
-  });
-  </script>
   <script src="./script.js"></script>
 </body>
+<!-- Made by Love -->
 </html>
