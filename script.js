@@ -11,6 +11,9 @@ const player=document.querySelector("div.player")
 const video=document.querySelector("div.player video")
 const svg1=document.querySelector("div.player .cursorpp svg:nth-child(1)")
 const svg2=document.querySelector("div.player .cursorpp svg:nth-child(2)")
+const svg3=document.querySelector("div.player .cursorpp svg:nth-child(3)")
+const backg=document.querySelector("div.backg")
+const heartImg=document.querySelector("figure.theimg")
 let i=0
 
 //hide the cursor on 1000px
@@ -46,12 +49,11 @@ window.addEventListener('resize',()=>{
 },true)
 
 //cursor folow on all the web site
-document.body.addEventListener("mouseenter",()=>{
-  gsap.to(dot,.5,{
-    top:'-5px',
-    left:'-5px',
-  })
+gsap.to(dot,.5,{
+  top:'-5px',
+  left:'-5px',
 })
+
 document.body.addEventListener("mousemove",(e)=>{
   gsap.to(dot,.5,{
     x:e.clientX,
@@ -119,10 +121,13 @@ dna.addEventListener("mouseleave",()=>{
 
 //redirection on click
 code.addEventListener('click',()=>{
-  window.location.href="./#thecode"
+  scroll.scrollTo('#thecode')
 })
 dna.addEventListener('click',()=>{
-  window.location.href="./#"
+  scroll.scrollTo('#dna')
+})
+heartImg.addEventListener('click',()=>{
+  window.location.href='dna'
 })
 
 //change the color of the dot in th HBF section
@@ -183,58 +188,88 @@ btnvid.addEventListener('click',()=>{
     opacity:1,
   })
   document.body.style.overflow='hidden'
+  gsap.to(backg,.2,{opacity:1,})
+  scroll.stop()
 })
 
 player.addEventListener('click',(e)=>{
   if (e.target==video){
-    return 0
+    return ;
   }
   player.style.pointerEvents='none'
   gsap.to(player,.5,{
     opacity:0,
   })
   document.body.style.overflow=''
+  scroll.start()
+  gsap.to(backg,.2,{opacity:0,})
   video.pause()
   i=0
+  gsap.to(svg3,.5,{scale:1,})
   gsap.to(svg1,.5,{scale:0,})
-  gsap.to(svg2,.5,{scale:1,})
-})
-
-video.addEventListener("mousemove",(e)=>{
-  gsap.to(cursorpp,.5,{
-    x:e.clientX,
-    y:e.clientY,
-    opacity:1,
-    scale:1,
-  })
-})
-video.addEventListener("mouseenter",()=>{
-  gsap.to(cursorpp,.5,{
-    opacity:1,
-    scale:1,
-    rotation:0,
-    top:'-50px',
-    left:'-50px',
-  })
-  gsap.to(dot,.5,{opacity:0})
-})
-video.addEventListener("mouseleave",()=>{
+  gsap.to(svg2,.5,{scale:0,})
+  gsap.to(dot,.5,{opacity:1})
   gsap.to(cursorpp,.5,{
     opacity:0,
     scale:0,
-    rotation:-45,
-    top:'0',
-    left:'0',
   })
-  gsap.to(dot,.5,{opacity:1})
+})
+
+gsap.to(cursorpp,.5,{
+  opacity:0,
+  scale:0,
+  rotation:-180,
+  top:'-75px',
+  left:'-50px',
+})
+
+player.addEventListener('mouseenter',()=>{
+  gsap.to(cursorpp,.5,{
+    opacity:1,
+    scale:1,
+  })
+  gsap.to(dot,.5,{opacity:0})
+})
+
+player.addEventListener("mousemove",(e)=>{
+  gsap.to(cursorpp,.5,{
+    x:e.clientX,
+    y:e.clientY,
+  })
+})
+
+video.addEventListener("mouseenter",()=>{
+  gsap.to(cursorpp,.5,{
+    rotation:0,
+  })
+  if (i%2!=0){
+    gsap.to(svg3,.5,{scale:0,})
+    gsap.to(svg1,.5,{scale:1,})
+    gsap.to(svg2,.5,{scale:0,})
+  }else{
+    gsap.to(svg3,.5,{scale:0,})
+    gsap.to(svg1,.5,{scale:0,})
+    gsap.to(svg2,.5,{scale:1,})
+  }
+})
+video.addEventListener("mouseleave",()=>{
+  gsap.to(cursorpp,.5,{
+    rotation:-180,
+  })
+  gsap.to(dot,.5,{opacity:0})
+  gsap.to(svg3,.5,{scale:1,})
+  gsap.to(svg1,.5,{scale:0,})
+  gsap.to(svg2,.5,{scale:0,})
 })
 video.addEventListener('click',()=>{
   if (i%2==0){
     video.play()
+    gsap.to(svg3,.5,{scale:0,})
     gsap.to(svg1,.5,{scale:1,})
     gsap.to(svg2,.5,{scale:0,})
   }else{
     video.pause()
+    gsap.to(svg3,.5,{scale:0,})
     gsap.to(svg1,.5,{scale:0,})
     gsap.to(svg2,.5,{scale:1,})
   }
@@ -244,15 +279,49 @@ video.addEventListener('ended',()=>{
   player.style.pointerEvents='none'
   gsap.to(player,.5,{
     opacity:0,
-  })
+})
+  gsap.to(backg,.2,{opacity:0,})
   document.body.style.overflow=''
   video.pause()
+  scroll.start()
   i=0
+  gsap.to(svg3,.5,{scale:1,})
   gsap.to(svg1,.5,{scale:0,})
-  gsap.to(svg2,.5,{scale:1,})
+  gsap.to(svg2,.5,{scale:0,})
+  gsap.to(dot,.5,{opacity:1})
+  gsap.to(cursorpp,.5,{
+    opacity:0,
+    scale:0,
+  })
 })
 
 download.addEventListener('click',()=>{
   window.location.href='app/birthday.zip'
 })
 
+heartImg.addEventListener("mousemove",(e)=>{
+  gsap.to(cursor,.5,{
+    x:e.clientX,
+    y:e.clientY,
+  })
+})
+heartImg.addEventListener("mouseenter",()=>{
+  gsap.to(cursor,.5,{
+    opacity:1,
+    scale:1,
+    rotation:0,
+    top:'-50px',
+    left:'-50px',
+  })
+  gsap.to(dot,.5,{opacity:0})
+})
+heartImg.addEventListener("mouseleave",()=>{
+  gsap.to(cursor,.5,{
+    opacity:0,
+    scale:0,
+    rotation:-45,
+    top:'0',
+    left:'0',
+  })
+  gsap.to(dot,.5,{opacity:1})
+})

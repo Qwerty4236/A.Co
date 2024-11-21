@@ -1,3 +1,71 @@
+/*! locomotive-scroll v4.1.3 | MIT License | https://github.com/locomotivemtl/locomotive-scroll */
+html.has-scroll-smooth {
+  overflow: hidden; }
+
+html.has-scroll-dragging {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none; }
+
+.has-scroll-smooth body {
+  overflow: hidden; }
+
+.has-scroll-smooth [data-scroll-container] {
+  min-height: 100vh; }
+
+[data-scroll-direction="horizontal"] [data-scroll-container] {
+  height: 100vh;
+  display: inline-block;
+  white-space: nowrap; }
+
+[data-scroll-direction="horizontal"] [data-scroll-section] {
+  display: inline-block;
+  vertical-align: top;
+  white-space: nowrap;
+  height: 100%; }
+
+.c-scrollbar {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 11px;
+  height: 100%;
+  transform-origin: center right;
+  transition: transform 0.3s, opacity 0.3s;
+  opacity: 0; }
+  .c-scrollbar:hover {
+    transform: scaleX(1.45); }
+  .c-scrollbar:hover, .has-scroll-scrolling .c-scrollbar, .has-scroll-dragging .c-scrollbar {
+    opacity: 1; }
+  [data-scroll-direction="horizontal"] .c-scrollbar {
+    width: 100%;
+    height: 10px;
+    top: auto;
+    bottom: 0;
+    transform: scaleY(1); }
+    [data-scroll-direction="horizontal"] .c-scrollbar:hover {
+      transform: scaleY(1.3); }
+
+.c-scrollbar_thumb {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: black;
+  opacity: 0.5;
+  width: 7px;
+  border-radius: 10px;
+  margin: 2px;
+  cursor: -webkit-grab;
+  cursor: grab; }
+  .has-scroll-dragging .c-scrollbar_thumb {
+    cursor: -webkit-grabbing;
+    cursor: grabbing; }
+  [data-scroll-direction="horizontal"] .c-scrollbar_thumb {
+    right: auto;
+    bottom: 0; }
+
+
 @font-face {
   font-family: Helvetica-Var;
   src: url(./font/HELVETICA-NOW-VAR.TTF);
@@ -233,17 +301,15 @@ svg path{
 }
 .player{
   position: fixed;
-  z-index: 9999;
   width: 100vw;
   height: 100vh;
-  top: 0;
   left: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #1c1c1c94;
   opacity: 0;
   pointer-events: none;
+  z-index: 10;
 }
 .player video{
   border-radius: 10px;
@@ -271,7 +337,7 @@ button{
   top: 0;
   left: 0;
   backdrop-filter:blur(4px);
-  rotate:-45deg;
+  rotate:-180deg;
   transition: 10ms;
   opacity: 0;
   scale: 0;
@@ -283,9 +349,72 @@ button{
 .cursorpp svg:nth-child(1){
   scale: 0;
 }
+.cursorpp svg:nth-child(2){
+  scale: 0;
+}
 section.thecode span{
   display: none;
 }
+.backg{
+  width: 100%;
+  height: 100%;
+  background-color: #1c1c1c94;
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  transition: .5s;
+  opacity: 0;
+  z-index: 1;
+}
+.cross{
+  position: absolute;
+  top:10px;
+  right:50px;
+}
+.cross svg{
+  width: 40px;
+}
+
+section.thecode{
+  height: 100vh;
+  display: flex;
+  flex-direction: column; 
+  padding: 40px 20px;
+  justify-content: center;
+  gap: 20px;
+}
+section.thedna *{
+  margin: 0;
+}
+section.thedna p{
+  width: -webkit-fill-available;
+}
+section.thedna h2{
+  font-family: vintageGlam;
+  font-size: calc(8vw - .3em);
+}
+section.thedna p{
+  font-size: calc(1.5vw + .3vh - .07em);
+  text-align: justify;
+}
+.imgur{
+  display: flex;
+  gap: 40px;
+}
+.imgur figure{
+  width: 100%;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.imgur figure h3{
+  position: absolute;
+  font-size: calc(2.3vw - .5em);
+  mix-blend-mode: difference;
+  color: #C4DAED;
+} 
 @media screen and (max-width: 1000px){
   *{
     cursor:auto;
@@ -354,6 +483,25 @@ section.thecode span{
   }
   .player video{
     width: 96%;
+  }
+  section.thedna{
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+  }
+  section.thedna p{
+    font-size: calc(.8em + .6vw);
+  }
+  section.thedna h2{
+    font-size: calc(3.6em + 2vw);
+  }
+  section.thedna h3{
+    font-size: calc(2em + 1vw);
+  }
+  .imgur{
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
   }
 
 }
