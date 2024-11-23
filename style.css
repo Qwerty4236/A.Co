@@ -437,13 +437,13 @@ footer .dcu nav li{
 
 @media screen and (max-height:500px){
   section.pager{
-    display: none;
+    display: none !important;
   }
   section{
     margin-bottom: 70vh;
   }
   footer{
-    display: none;
+    display: none !important;
   }
   .player video{
     width: 50%;
