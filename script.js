@@ -1,3 +1,4 @@
+gsap.registerPlugin(ScrollTrigger)
 const cursor=document.querySelector("div.cursor")
 const cursorpp=document.querySelector("div.cursorpp")
 const dot=document.querySelector("div.dot")
@@ -181,7 +182,7 @@ btnvid.addEventListener('click',()=>{
     opacity:1,
   })
   document.body.style.overflow='hidden'
-  
+  video.classList.add("videoscale")
 })
 
 player.addEventListener('click',(e)=>{
@@ -203,6 +204,7 @@ player.addEventListener('click',(e)=>{
     opacity:0,
     scale:0,
   })
+  video.classList.remove("videoscale")
 })
 
 gsap.to(cursorpp,.5,{
@@ -246,7 +248,6 @@ video.addEventListener("mouseleave",()=>{
   gsap.to(cursorpp,.5,{
     rotation:-180,
   })
-  gsap.to(dot,.5,{opacity:0})
   gsap.to(svg3,.5,{scale:1,})
   gsap.to(svg1,.5,{scale:0,})
   gsap.to(svg2,.5,{scale:0,})
@@ -271,7 +272,6 @@ video.addEventListener('ended',()=>{
     opacity:0,
 })
   document.body.style.overflow=''
-  video.pause()
   i=0
   gsap.to(svg3,.5,{scale:1,})
   gsap.to(svg1,.5,{scale:0,})
@@ -281,6 +281,7 @@ video.addEventListener('ended',()=>{
     opacity:0,
     scale:0,
   })
+  video.classList.remove("videoscale")
 })
 
 download.addEventListener('click',()=>{
@@ -313,3 +314,64 @@ heartImg.addEventListener("mouseleave",()=>{
   })
   gsap.to(dot,.5,{opacity:1})
 })
+
+//start animation
+gsap.to('.tltl', {
+  scrollTrigger: {
+    trigger:'.tltl',
+    start:'90% 80%',
+    toggleActions:'play none pause pause',
+  },
+  y: 0,
+  opacity:1,
+});
+gsap.to('#thecode p', {
+  scrollTrigger: {
+    trigger:'.thecode p',
+    start:'90% 90%',
+    toggleActions:'play none pause pause'
+  },
+  y: 0,
+  opacity:1,
+});
+gsap.to('button.download', {
+  scrollTrigger: {
+    trigger:'button.download',
+    start:'bottom 90%',
+    toggleActions:'play none pause pause',
+  },
+  opacity:1,
+});
+gsap.to('.vid', {
+  scrollTrigger: {
+    trigger:'.vid',
+    start:'90% 90%',
+    toggleActions:'play none pause pause'
+  },
+  opacity:1,
+});
+gsap.to('#dna p', {
+  scrollTrigger: {
+    trigger:'#dna p',
+    start:'90% 90%',
+    toggleActions:'play none pause pause'
+  },
+  scale:1,
+});
+gsap.to('.imgur figure', {
+  scrollTrigger: {
+    trigger:'.imgur figure',
+    start:'90% 90%',
+    toggleActions:'play none pause pause'
+  },
+  scale:1,
+});
+gsap.to('#dna h2', {
+  scrollTrigger: {
+    trigger:'#dna h2',
+    start:'90% 90%',
+    toggleActions:'play none pause pause'
+  },
+  y: 0,
+  opacity:1,
+});

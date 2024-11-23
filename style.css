@@ -6,6 +6,10 @@
   font-family: VintageGlam;
   src: url(./font/vintageGlamour/VINTAGEGLAMOURITALIC-DO471.TTF);
 }
+.tltl{
+  transform: translateY(40px);
+  opacity: 0;
+}
 
 *{
   user-select: none;
@@ -25,12 +29,21 @@ figure{
   margin: 0;
   padding: 0;
   overflow: hidden;
+  display: flex;
 }
 figure img{
   width:-webkit-fill-available;
   height:-webkit-fill-available;
   border: solid 2px #131A35;
   object-fit: cover;
+  overflow: hidden;
+}
+
+section.pager figure img{
+  height: 0;
+}
+section.pager figure img:nth-child(1){
+  animation: up 1.2s forwards;
 }
 section.pager{
   display: grid;
@@ -39,14 +52,17 @@ section.pager{
   height: 100vh;
 }
 section.pager div{
+  overflow: hidden;
+  scale: 0;
   padding: 20px;
   border: solid 2px #131A35;
   display: flex;
   flex-direction: column;
+  animation: scaling 1s forwards;
 }
 section.pager div p{
   margin: 0;
-  font-size: calc(.9vw + .2vh - .05em);
+  font-size: clamp(.4em,20px,1vw);
 }
 section.pager div h3, h1, h2, h4{
   margin: 0;
@@ -54,16 +70,17 @@ section.pager div h3, h1, h2, h4{
 
 h3.title{
   font-family: VintageGlam;
-  font-size: calc(3.6vw - .3em);
+  font-size: clamp(.5em,3vw,50px);
 }
 .love{
-  font-size: calc(2.3vw - .5em);
+  font-size: clamp(.2em,2.3vw,30px);
   font-weight: 700;
 }
 .code{
   grid-column: 1/5;
   grid-row: 1/4;
   background-color: #EDB5E7;
+  animation-delay: .2s;
 }
 .cours{
   grid-column: 8/12;
@@ -74,7 +91,7 @@ h3.title{
   color: #C4DAED;
 }
 .cours .avail{
-  font-size: calc(3.6vw - .6em);
+  font-size: clamp(.5em,3vw,50px);
   text-align: center;
   width: 15vw;
   font-weight: 1000;
@@ -86,6 +103,7 @@ h3.title{
   grid-column: 5/12;
   grid-row: 1/4;
   background-color: #F7FE8E;
+  animation-delay: .3s;
 }
 .i{
   grid-column: 1/8;
@@ -96,6 +114,7 @@ h3.title{
   grid-row: 1/6;
   width: 100%;
   height: 100%;
+  align-items: flex-end;
 }
 .hpb{
   grid-column: 12/21;
@@ -105,9 +124,11 @@ h3.title{
   align-items: center;
   justify-content: center;
   background-color: #F8A0A0;
+  animation-delay: .5s;
 }
+
 .hpb h3{
-  font-size: 3.6vw;
+  font-size: clamp(.5em,3vw,50px);
   text-align: center;
   font-weight: 1000;
   z-index: 99;
@@ -133,6 +154,8 @@ h3.title{
 }
 .bigf img{
   scale: 1 !important;
+  opacity: 1 !important;
+  transition: all .5 cubic-bezier(1,-0.42,.2,1.32);
 }
 .dot{
   width: 10px;
@@ -162,11 +185,15 @@ section.thecode p{
 }
 section.thecode h2{
   font-family: vintageGlam;
-  font-size: calc(8vw - .3em);
+  font-size: clamp(7em,10vw,100px);
 }
 section.thecode p{
-  font-size: calc(1.2vw + .2vh - .05em);
+  font-size: clamp(.2em,2.5vw,22px);
   text-align: justify;
+}
+#thecode p{
+  transform: translateY(40px);
+  opacity: 0;
 }
 .but{
   display: flex;
@@ -185,6 +212,7 @@ section.thecode p{
   transition: .5s;
   font-size: calc(.9vw + .2vh - .05em);
   align-items: center;
+  opacity: 0;
 }
 svg path{
   transition: .5s;
@@ -230,6 +258,7 @@ svg path{
   align-items: center;
   background-color: transparent;
   padding: 0;
+  opacity: 0;
 }
 .player{
   position: fixed;
@@ -249,6 +278,11 @@ svg path{
   border-radius: 10px;
   width: 50%;
   cursor: none;
+  scale: 0;
+}
+.videoscale{
+  animation: scaling .5s forwards;
+  animation-delay:.1s;
 }
 button{
   cursor: none;
@@ -275,6 +309,7 @@ button{
   transition: 10ms;
   opacity: 0;
   scale: 0;
+  z-index: 999;
 }
 .cursorpp svg{
   width: 30px;
@@ -306,20 +341,22 @@ section.thecode{
   justify-content: center;
   gap: 20px;
 }
+#dna{
+  border-bottom: solid 2px #131A35;
+}
+#dna h2{
+  transform: translateY(40px);
+  opacity: 0;
+}
 section.thedna *{
   margin: 0;
 }
 section.thedna p{
   width: -webkit-fill-available;
+  scale: 0;
 }
-section.thedna h2{
-  font-family: vintageGlam;
-  font-size: calc(8vw - .3em);
-}
-section.thedna p{
-  font-size: calc(1.5vw + .3vh - .07em);
-  text-align: justify;
-}
+
+
 .imgur{
   display: flex;
   gap: 40px;
@@ -330,6 +367,16 @@ section.thedna p{
   display: flex;
   align-items: center;
   justify-content: center;
+  scale: 0;
+}
+.imgur figure img{
+  filter: grayscale(1);
+  transition: .5s;
+  scale: 1;
+}
+.imgur figure:hover img{
+  filter: grayscale(0);
+  scale: 1.2;
 }
 .imgur figure h3{
   position: absolute;
@@ -387,12 +434,40 @@ footer .dcu nav li{
   font-size: calc(1.4vw + .2vh - .05em);
   font-weight: 500;
 }
+
 @media screen and (max-width: 1000px){
   *{
     cursor:auto;
   }
   button{
     cursor: pointer;
+  }
+  p{
+    scale: 1;
+  }
+  .download{
+    opacity: 1;
+  }
+  .vid{
+    opacity: 1 ;
+  }
+  #thecode h2{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  #thecode p{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  #dna h2{
+    transform: translateY(0);
+    opacity: 1;
+  }
+  #dna p{
+    scale: 1;
+  }
+  #dna figure{
+    scale: 1;
   }
   video{
     cursor: pointer;
@@ -405,13 +480,25 @@ footer .dcu nav li{
     flex-direction: column;
   }
   section.pager div{
+    scale: 1;
+    opacity: 0;
     height: -webkit-fill-available;
     border-width: .2vw;
     align-items: center;
     justify-content: center;
     padding: 17px;
     height: 100%;
-    
+    animation: opac .5s forwards;
+  }
+
+  section.pager div.dna{
+    animation-delay: .1s;
+  }
+  section.pager div.cours{
+    animation-delay: .2s;
+  }
+  section.pager div.hpb{
+    animation-delay: .3s;
   }
   section.pager div p{
     font-size: calc(.7em + .6vw);
@@ -456,11 +543,16 @@ footer .dcu nav li{
   }
   .player video{
     width: 96%;
+    scale: 1;
+  }
+  .videoscale{
+    animation: none;
   }
   section.thedna{
     align-items: center;
     justify-content: center;
     gap: 20px;
+    
   }
   section.thedna p{
     font-size: calc(.8em + .6vw);
@@ -476,6 +568,11 @@ footer .dcu nav li{
     align-items: center;
     width: 100%;
   }
+  .imgur figure img{
+  filter: grayscale(0);
+  transition: .5s;
+  scale: 1;
+}
   footer{
     flex-direction: column;
     height: 100vh;
@@ -508,5 +605,33 @@ footer .dcu nav li{
   }
   .player video{
     width: 50%;
+  }
+  .thedna{
+    border-bottom: none !important;
+  }
+}
+
+@keyframes scaling {
+  0%{
+    scale: 0;
+  }
+  100%{
+    scale: 1;
+  }
+}
+@keyframes up {
+  0%{
+    height: 0;
+  }
+  100%{
+    height: 100%;
+  }
+}
+@keyframes opac {
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 100%;
   }
 }
