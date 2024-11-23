@@ -435,6 +435,24 @@ footer .dcu nav li{
   font-weight: 500;
 }
 
+@media screen and (max-height:500px){
+  section.pager{
+    display: none;
+  }
+  section{
+    margin-bottom: 70vh;
+  }
+  footer{
+    display: none;
+  }
+  .player video{
+    width: 50%;
+  }
+  .thedna{
+    border-bottom: none !important;
+  }
+}
+
 @media screen and (max-width: 1000px){
   *{
     cursor:auto;
@@ -590,23 +608,7 @@ footer .dcu nav li{
     width: 35vw;
   }
 }
-@media screen and (max-height:500px){
-  section.pager{
-    display: none;
-  }
-  section{
-    margin-bottom: 70vh;
-  }
-  footer{
-    display: none;
-  }
-  .player video{
-    width: 50%;
-  }
-  .thedna{
-    border-bottom: none !important;
-  }
-}
+
 
 @keyframes scaling {
   0%{
