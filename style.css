@@ -442,10 +442,7 @@ footer .dcu nav li{
   button{
     cursor: pointer;
   }
-  p{
-    scale: 1;
-  }
-  .download{
+  /* .download{
     opacity: 1;
   }
   .vid{
@@ -467,7 +464,7 @@ footer .dcu nav li{
     scale: 1;
   }
   #dna figure{
-    scale: 1;
+    scale: 1; */
   }
   video{
     cursor: pointer;

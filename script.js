@@ -316,7 +316,8 @@ heartImg.addEventListener("mouseleave",()=>{
 })
 
 //start animation
-gsap.to('.tltl', {
+
+gsap.to('.tltl', .5,{
   scrollTrigger: {
     trigger:'.tltl',
     start:'90% 80%',
@@ -325,7 +326,7 @@ gsap.to('.tltl', {
   y: 0,
   opacity:1,
 });
-gsap.to('#thecode p', {
+gsap.to('#thecode p', .5,{
   scrollTrigger: {
     trigger:'.thecode p',
     start:'90% 90%',
@@ -334,7 +335,7 @@ gsap.to('#thecode p', {
   y: 0,
   opacity:1,
 });
-gsap.to('button.download', {
+gsap.to('button.download', .5,{
   scrollTrigger: {
     trigger:'button.download',
     start:'bottom 90%',
@@ -342,7 +343,7 @@ gsap.to('button.download', {
   },
   opacity:1,
 });
-gsap.to('.vid', {
+gsap.to('.vid', .5,{
   scrollTrigger: {
     trigger:'.vid',
     start:'90% 90%',
@@ -350,7 +351,7 @@ gsap.to('.vid', {
   },
   opacity:1,
 });
-gsap.to('#dna p', {
+gsap.to('#dna p', .5,{
   scrollTrigger: {
     trigger:'#dna p',
     start:'90% 90%',
@@ -358,7 +359,7 @@ gsap.to('#dna p', {
   },
   scale:1,
 });
-gsap.to('.imgur figure', {
+gsap.to('.imgur figure', .5,{
   scrollTrigger: {
     trigger:'.imgur figure',
     start:'90% 90%',
@@ -366,7 +367,7 @@ gsap.to('.imgur figure', {
   },
   scale:1,
 });
-gsap.to('#dna h2', {
+gsap.to('#dna h2', .5,{
   scrollTrigger: {
     trigger:'#dna h2',
     start:'90% 90%',
@@ -374,4 +375,7 @@ gsap.to('#dna h2', {
   },
   y: 0,
   opacity:1,
+});
+ScrollTrigger.config({ 
+  ignoreMobileResize: true
 });
