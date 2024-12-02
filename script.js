@@ -379,3 +379,5 @@ gsap.to('#dna h2', .5,{
 ScrollTrigger.config({ 
   ignoreMobileResize: true
 });
+
+const BIN="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
